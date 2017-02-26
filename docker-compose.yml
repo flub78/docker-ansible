@@ -1,0 +1,18 @@
+version: '2'
+services:
+  ansible:
+    build: .
+    image: ansible:latest
+    volumes:
+      - $HOME/.ssh/id_rsa.public/:/root/.ssh/authorized_keys
+    networks:
+      - mynet
+     
+networks:
+  mynet:
+    driver: bridge
+  config:
+    subnet: 172.18.0.0/16
+      gateway: 171.18.0.1
+      aux_addresses:
+        lets-surf: 172.18.0.100
