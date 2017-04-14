@@ -1,4 +1,4 @@
-# Minimal ansible ctarget container
+# Minimal ansible target container
 #
 # docker run -d --name=ansible -v $HOME/.ssh/id_rsa.public/:/root/.ssh/authorized_keys ansible
 
