@@ -30,18 +30,20 @@ or ansible
 ```
 ~/docker/containers/ansible $ ./test.sh 
 test ansible container
-ed17a208efbfe43b0c5bedd1f041c30fb41fce631b2e7a1cc0b3d4767c9dcc04
-$IP=172.17.0.4
+d4622734c810f4111f5c81c68df8c568ce6db6831705b14e2fbebbf0c8207b1e
+ansible -i hosts ansible -m ping
 root@172.17.0.4 | success >> {
     "changed": false, 
     "ping": "pong"
 }
 
+ansible -i hosts ansible -a "hostname"
 root@172.17.0.4 | success | rc=0 >>
-ed17a208efbf
+d4622734c810
 
+ansible -i hosts ansible -a "uptime"
 root@172.17.0.4 | success | rc=0 >>
- 01:02:52 up 83 days,  4:28,  1 user,  load average: 0.21, 0.15, 0.15
+ 01:13:01 up 83 days,  4:38,  1 user,  load average: 0.16, 0.18, 0.15
 
 ansible
 ```
