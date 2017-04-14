@@ -3,28 +3,25 @@
 Minimal container to be provisionned by ansible.
 
 ## Build
-```
-docker build -t flub78/ansible .
-```
+
+    docker build -t flub78/ansible .
+
 
 ## Usage
 to start it, be sure that the file id_rsa.public is owned by root with no read permission to others.
 
-```
-docker run -d --name=ansible -v $HOME/.ssh/id_rsa.public/:/root/.ssh/authorized_keys flub78/ansible
-```
+    docker run -d --name=ansible -v $HOME/.ssh/id_rsa.public/:/root/.ssh/authorized_keys flub78/ansible
+    export IP=`docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ansible`
 
 to stop it
-```
-docker kill ansible
-docker rm -f ansible
-```
-export IP=`docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' ansible`
+
+    docker kill ansible
+    docker rm -f ansible
+
 once the container is running, it can be accessed through ssh
-```
-docker run -d --name=ansible -v $HOME/.ssh/id_rsa.public/:/root/.ssh/authorized_keys flub78/ansible
-ssh root@$IP
-```
+
+    ssh root@$IP
+
 or ansible
 
 ```
